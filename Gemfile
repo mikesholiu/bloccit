@@ -58,3 +58,4 @@ group :development do
 end
 
  gem 'devise'
+ gem 'figaro', '1.0'
