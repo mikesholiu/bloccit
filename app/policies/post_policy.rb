@@ -16,8 +16,7 @@ end
       if user.admin?
         scope.all
       else
-        scope.where(:published => true)
-      end
+        scope.where(user: user)
     end
   end
 
@@ -25,4 +24,5 @@ end
     user.admin? or not post.published?
   end
 
+end
 end
