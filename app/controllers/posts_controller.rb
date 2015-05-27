@@ -37,7 +37,7 @@ end
 
   def update
     @topic = Topic.find(params[:topic_id])
-    @post = current_user.posts.build(post_params)
+    @post = Post.find(params[:id])
     @post.topic = @topic
     authorize @post
      if @post.update_attributes(params.require(:post).permit(:title, :body))
