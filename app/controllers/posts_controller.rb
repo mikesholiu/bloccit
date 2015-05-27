@@ -18,7 +18,7 @@ class PostsController < ApplicationController
   def edit
     @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:id])
-      authorize @post
+    authorize @post
   end
 
  def create
@@ -28,7 +28,7 @@ class PostsController < ApplicationController
   authorize @post
  if @post.save
    flash[:notice] = "Post was saved."
-   redirect_to @post
+   redirect_to :action => 'show', :id => @post.id
  else
    flash[:error] = "There was an error saving the post. Please try again."
    render :new
@@ -38,10 +38,11 @@ end
   def update
     @topic = Topic.find(params[:topic_id])
     @post = current_user.posts.build(post_params)
-      authorize @post
+    @post.topic = @topic
+    authorize @post
      if @post.update_attributes(params.require(:post).permit(:title, :body))
        flash[:notice] = "Post was updated."
-       redirect_to @post
+       redirect_to :action => 'show', :id => @post.id
      else
        flash[:error] = "There was an error saving the post. Please try again."
        render :edit
