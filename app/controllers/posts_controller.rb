@@ -40,7 +40,7 @@ end
     @post = Post.find(params[:id])
     @post.topic = @topic
     authorize @post
-     if @post.update_attributes(params.require(:post).permit(:title, :body))
+     if @post.update_attributes(post_params)
        flash[:notice] = "Post was updated."
        redirect_to :action => 'show', :id => @post.id
      else
@@ -52,7 +52,7 @@ end
    private
    
    def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :image)
   end
 
 end
