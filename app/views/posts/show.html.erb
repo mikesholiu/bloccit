@@ -11,7 +11,12 @@
 
     <p><%= markdown_to_html @post.body %></p>
     <p><%= image_tag(@post.image.url) %></p>
-    
+
+    <h2><%= @comments.count %> Comments</h2>
+    <%= render @comments %>
+    <h4>New Comment</h4>
+      <%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @comment } %>
+
   </div>
   <div class="col-md-4">
     <% if policy(@post).edit? %>

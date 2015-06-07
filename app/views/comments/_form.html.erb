@@ -1,0 +1,25 @@
+<!-- Create a comments/_form.html.erb partial in a new comments view directory so users can submit new comments on a post. The partial should take topic and post local variables. The form within the partial should submit to [topic, post, post.comments.new], so that it routes correctly given our nested routes. It should also initialize a new comment for users to create by submitting the form. -->
+
+<%= form_for [topic, post, comment] do |f| %>
+  <% if comment.errors.any? %>
+    <div class="alert alert-block">
+      <h4><%= pluralize(comment.errors.count, "error") %></h4>
+      <ul>
+        <% comment.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <%= form_group_tag(comment.errors[:body]) do %>
+    <div class="controls">
+      <%= f.text_area :body, rows: 2 %>
+    </div>
+  <% end %>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit "Add Comment", class: 'btn' %>
+    </div>
+  </div>
+<% end %>
