@@ -5,6 +5,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
   belongs_to :topic
   mount_uploader :image, ImageUploader
+  after_create :create_vote
 
   def up_votes
     votes.where(value: 1).count
@@ -30,6 +31,12 @@ class Post < ActiveRecord::Base
      new_rank = points + age_in_days
  
      update_attribute(:rank, new_rank)
+  end
+
+  private
+
+  def create_vote
+    user.votes.create(value: 1, post: self)
   end
 
 end
