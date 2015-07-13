@@ -28,15 +28,14 @@ class PostsController < ApplicationController
   @post = current_user.posts.build(post_params)
   @post.topic = @topic
   authorize @post
- if @post.save
-    @post.create_vote
+  if @post.save_with_initial_vote
    flash[:notice] = "Post was saved."
    redirect_to :action => 'show', :id => @post.id
- else
+  else
    flash[:error] = "There was an error saving the post. Please try again."
    render :new
+  end
  end
-end
 
   def update
     @topic = Topic.find(params[:topic_id])
