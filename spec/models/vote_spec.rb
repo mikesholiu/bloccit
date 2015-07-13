@@ -1,5 +1,7 @@
 require 'rails_helper'
 describe Vote do
+  include TestFactories
+
   describe "validations" do
     let(:post) { Post.create(title: 'post title', body: 'Post bodies must be pretty long.') }
     let(:vote) { Vote.new(value: vote_value, post: post) }
@@ -28,4 +30,12 @@ describe Vote do
       end
     end
   end
+     describe 'after_save' do
+     it "calls `Post#update_rank` after save" do
+       post = associated_post
+       vote = Vote.new(value: 1, post: post)
+       expect(post).to receive(:update_rank)
+       vote.save
+     end
+   end
 end
