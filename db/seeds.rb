@@ -13,7 +13,7 @@
  
  admin = User.new(
   name: 'Admin User',
-  email: 'admin@example.com',
+  email: 'mikesholiu@gmail.com',
   password: 'helloworld',
   role: 'admin'
   )
@@ -32,7 +32,7 @@
  # Create a member
  member = User.new(
    name:     'Member User',
-   email:    'member@example.com',
+   email:    'mikeliu1991@gmail.com',
    password: 'helloworld'
  )
  member.skip_confirmation!
