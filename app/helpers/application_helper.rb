@@ -14,4 +14,17 @@ module ApplicationHelper
     (redcarpet.render markdown).html_safe
   end
   
+  def up_vote_link_classes(post)
+    arrow_string = "glyphicon glyphicon-chevron-up"
+    vote = current_user.voted(post)
+    arrow_string += "voted" if vote && vote.up_vote?
+    arrow_string
+  end
+
+  def down_vote_link_classes(post)
+    arrow_string = "glyphicon glyphicon-chevron-down"
+    vote = current_user.voted(post)
+    arrow_string += "voted" if vote && vote.down_vote?
+    arrow_string
+  end
 end
