@@ -49,6 +49,7 @@ group :development, :test do
 
   gem 'rspec-rails', '~> 3.0'
   gem 'capybara'
+  gem 'puma'
 
 end
 group :production do
@@ -59,6 +60,7 @@ end
 group :development do
   gem 'sqlite3'
   gem 'pry-rails'
+  gem 'thin'
 end
 
  gem 'devise'
