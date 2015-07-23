@@ -1,21 +1,4 @@
 <div class="media">
-<<<<<<< HEAD
-<%= render partial: 'votes/voter', locals: { post: post } %>
-  <div class="media-body">
-    <h4 class="media-heading">
-      <%= link_to (markdown_to_html post.title), [post.topic, post] %>
-       <small>
-       <%= image_tag(post.image.url) %>
-       </small>
-    </h4>
-    <small>
-       <%= image_tag(post.user.avatar.tiny.url) if post.user.avatar? %>
-       submitted <%= time_ago_in_words(post.created_at) %> ago by
-       <%= post.user.name %><br>
-       <%= post.comments.count %> Comments
-    </small>
-  </div>
-=======
  <%= render partial: 'votes/voter', locals: { post: post } %>
  <div class="media-body">
    <h4 class="media-heading">
@@ -29,5 +12,4 @@
      <%= post.comments.count %> Comments
    </small>
  </div>
->>>>>>> public-profiles
 </div>
