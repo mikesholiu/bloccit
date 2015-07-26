@@ -13,10 +13,15 @@
     <p><%= image_tag(@post.image.url) %></p>
 
     <% if policy(@comment).create? %>
-      <h2><%= @comments.count %> Comments</h2>
+      <h2>Comments</h2>
+      <div class='js-comments'>
       <%= render partial: 'comments/comment', collection: @comments %>
+      </div>
+
       <h4>New Comment</h4>
-        <%= render partial: 'comments/form', locals: { topic: @topic, post: @post, comment: @comment } %>
+      <div class='new-comment'>
+        <%= render 'comments/form', :comment => @comment %>
+      </div>
     <% end %>
 
   </div>

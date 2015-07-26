@@ -1,9 +1,9 @@
-<%= form_for [post, comment] do |f| %>
+<%= form_for [@post, comment], remote: true do |f| %>
   <% if comment.errors.any? %>
     <div class="alert alert-block">
       <h4><%= pluralize(comment.errors.count, "error") %></h4>
       <ul>
-        <% comment.errors.full_messages.each do |msg| %>
+        <% @comment.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
       </ul>
