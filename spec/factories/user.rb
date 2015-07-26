@@ -5,5 +5,13 @@
      password "helloworld"
      password_confirmation "helloworld"
      confirmed_at Time.now
+   
+
+   factory :user_with_posts_and_comments do
+      after(:build) do |user|
+        post = create(:post, user: user)
+        comment = create(:comment, user: user, post: post)    
    end
  end
+end
+end
